@@ -12,6 +12,7 @@ EPOCHS=10
 LR=0.01
 TRAIN_BATCH_SIZE=32
 TEST_BATCH_SIZE=1024
+MAX_REVIEW_SIZE=927
 
 if __name__ == '__main__':
     pass

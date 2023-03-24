@@ -11,11 +11,11 @@ class LSTMNN(nn.Module):
         weights = w2vmodel.wv
         self.embedding = nn.Embedding.from_pretrained(torch.FloatTensor(weights.vectors), padding_idx=w2vmodel.wv.key_to_index['pad'])
         self.lstm=nn.LSTM(EMBEDDING_SIZE,HIDDEN_SIZE,batch_first=True,num_layers=2)
-        self.fc=nn.Linear(HIDDEN_SIZE,NUM_CLASSES)
+        self.fc=nn.Linear(HIDDEN_SIZE*MAX_REVIEW_SIZE,NUM_CLASSES)
     def forward(self,x):
         x=self.embedding(x)
-        x=self.lstm(x)
-        return self.fc(x[1][0][-1])
+        x=self.lstm(x)[0]
+        return self.fc(x.reshape(-1,HIDDEN_SIZE*MAX_REVIEW_SIZE))
 
 class CNN(nn.Module):
     def __init__(self):

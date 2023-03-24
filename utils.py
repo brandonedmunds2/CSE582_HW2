@@ -34,7 +34,7 @@ def clean_data():
     # Mapping stars to sentiment into three categories
     data['sentiment'] = [ map_sentiment(x) for x in data['stars']]
 
-    data = pd.concat([data[data['sentiment'] == 1].head(10000), data[data['sentiment'] == -1].head(10000), data[data['sentiment'] == 0].head(10000)])
+    data = pd.concat([data[data['sentiment'] == 1].head(10000), data[data['sentiment'] == 2].head(10000), data[data['sentiment'] == 0].head(10000)])
 
     # Tokenize the text column to get the new column 'tokenized_text'
     data['tokenized_text'] = [simple_preprocess(line, deacc=True) for line in data['text']] 
