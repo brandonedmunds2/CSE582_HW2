@@ -38,7 +38,7 @@ class CNN(nn.Module):
         x = torch.unsqueeze(x, 1)
         xs = []
         for conv in self.convs:
-            x2 = torch.relu(conv(x))
+            x2 = F.relu6(conv(x))
             x2 = torch.squeeze(x2, -1)
             x2 = F.max_pool1d(x2, x2.size(2))
             xs.append(x2)

@@ -85,7 +85,7 @@ def count_parameters(model):
 
 def main(model_type):
     model = model_type()
-    model.to(device)
+    model=model.to(device)
     print(f'Number of parameters: {count_parameters(model)}')
     criterion = nn.CrossEntropyLoss()
     optimizer = optim.Adam(model.parameters(), lr=LR)
