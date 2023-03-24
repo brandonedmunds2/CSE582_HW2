@@ -15,7 +15,7 @@ class LSTMNN(nn.Module):
     def forward(self,x):
         x=self.embedding(x)
         x=self.lstm(x)
-        return self.fc(F.relu(x[1][0][-1]))
+        return self.fc(x[1][0][-1])
 
 class CNN(nn.Module):
     def __init__(self):
